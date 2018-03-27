@@ -1,0 +1,54 @@
+#The next line of code imports the whole Tkinter module
+from tkinter import *
+import time
+
+
+class Pascal():
+    def __init__(self):
+
+#This line of code is used to create a window
+
+        self.homescreen = Tk()
+#The next 4 lines of code sets the title of the window, size of the window and background colour.
+#Note: The width and height of the background colour has to be same as that of the screen resolution
+
+        self.homescreen.title("PASCAL")
+        self.homescreen.geometry("600x500")
+
+        startBg = Frame(self.homescreen, width=600, height=500, bg="black")
+        startBg.pack(side=TOP, expand=NO, fill= BOTH)
+
+#Code for the game title and its colour
+
+        gameTitle = Label(self.homescreen, text="PASCAL", fg="steel blue", bg="white", font = "mincho 20 bold")
+        gameTitle.place(x=280, y=100)
+
+#Code for Start and Quit buttons
+
+
+        self.quitButton = Button(self.homescreen, text="Exit", command = self.quitMain, bg="red")
+        self.quitButton.place (x=525, y=450)
+
+ 
+        startButton = Button(self.homescreen, text="Start", bg="green", fg="black")
+        startButton.place (x=75, y =450)
+        #run(self.x1, self.y1, self.x2, self.y2)
+
+#create a canvas and place a small moving robot into the canvas
+
+        canvasFR = Canvas(self.homescreen, width=595, height = 100, bg="green")
+        canvasFR.place(x= 0, y=300)
+        robot1 = canvasFR.create_oval(10, 10, 30, 30, fill ="red")
+
+        for i in range(0,60):
+            canvasFR.move(1,10, 0)
+            self.homescreen.update()
+            time.sleep(0.1)
+            
+
+    def quitMain(self):
+        exit()
+        
+ 
+        self.homescreen.mainloop()
+Pascal()

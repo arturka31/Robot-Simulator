@@ -1,0 +1,40 @@
+from tkinter import *
+
+start= Tk()
+
+
+
+#Determine shape of score board
+
+
+canvas = Canvas(start,width=200, height=100, bg="yellow")
+canvas.pack()
+
+
+
+#Starting score number
+Score= 0 
+
+scoreBox = canvas.create_text(100,25, text=("Score", Score), font=("Times New Roman", 25))
+
+def change():
+    canvas.delete(ALL)
+    scoreBox = canvas.create_text(100,25, text=("Score", Score), font=("Times New Roman", 25))
+
+
+
+#So the number changes when the button is pressed
+def changee(): 
+    canvas.delete(scoreBox)
+    print("del")
+
+def do():
+    change()
+    changee()
+
+
+
+
+#Determining the place of the button in the canvas
+B= Button(canvas, text= "change it", command=do) 
+B.place(x=100,y=70)

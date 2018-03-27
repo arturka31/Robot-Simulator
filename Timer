@@ -1,0 +1,34 @@
+
+#edited version
+
+#Make a timer so the game will be completed in a minute
+
+from tkinter import *
+import time
+root = Tk()
+
+
+#Determine the shape of the timer 
+canvas = Canvas(root, width=500, height=325)
+canvas.pack()
+
+#Put the time of the timer of a minute
+def countdown():
+    for t in range(60, -1, -1):
+        sf = "{:02d}:{:02d}".format(*divmod(t, 60))
+        time_str.set(sf)
+        root.update()
+        time.sleep(1)
+
+        
+#Add a start and stop button so timer can be adjusted and restarted 
+time_str = StringVar()
+labelFont = ('times', 30)
+Label(root, textvariable=time_str, font=labelFont, bg='white', 
+         fg='red', bd=3).pack(fill='x', padx=5, pady=5)
+Button(root, text='Start', command=countdown).pack()
+Button(root, text='Stop', command=root.destroy).pack()
+root.mainloop()
+
+
+
